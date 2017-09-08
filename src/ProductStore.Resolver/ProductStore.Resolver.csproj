@@ -52,6 +52,10 @@
       <Project>{134483c3-24f1-4e1c-b34a-09d5106cb981}</Project>
       <Name>ProductStore.Repository</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProductStore.Data.Xml\ProductStore.Data.Xml.csproj">
+      <Project>{5d1a723e-c311-4cc2-8e96-655102f504e1}</Project>
+      <Name>ProductStore.Data.Xml</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProductStore.Data\ProductStore.Data.Memory.csproj">
       <Project>{2638ff6c-83fa-46ff-b795-f427b5c94292}</Project>
       <Name>ProductStore.Data.Memory</Name>

@@ -1,28 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Autofac;
 using ProductStore.Repository.Interfaces;
 using ProductStore.Repository.Models;
 
 namespace ProductStore.Controllers
 {
-    public class ProductController : Controller
+    public class ProductController : BaseController
     {
-        private readonly IProductRepository _productRepository;
+        private IProductRepository _productRepository;
+        private readonly IComponentContext _icoContext;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository productRepository, IComponentContext icoContext)
         {
             _productRepository = productRepository;
+            _icoContext = icoContext;
         }
 
         // GET: Produc
         public ActionResult Index()
         {
+            _productRepository = _icoContext.ResolveNamed<IProductRepository>(SourceName);
+
             var model = _productRepository.GetAll();
 
-            if(model == null)
+            if (model == null)
                 model = new List<Product>();
 
             return View(model);
@@ -40,19 +46,38 @@ namespace ProductStore.Controllers
             {
                 return View(model);
             }
-
+            _productRepository = _icoContext.ResolveNamed<IProductRepository>(SourceName);
             _productRepository.Save(model);
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(int id)
         {
+            //todo: implement
             throw new NotImplementedException();
         }
 
         public ActionResult Edit(int id)
         {
+            //todo: implement
             throw new NotImplementedException();
+        }
+
+        public JsonResult Source(string source)
+        {
+            if (Request.IsAjaxRequest())
+            {
+                if (!string.IsNullOrEmpty(source))
+                {
+                    SourceName = source;
+                    return Json(new
+                    {
+                        Url = HttpContext.Request.UrlReferrer.LocalPath
+                    }, JsonRequestBehavior.AllowGet);
+                }
+            }
+
+            return null;
         }
     }
 }

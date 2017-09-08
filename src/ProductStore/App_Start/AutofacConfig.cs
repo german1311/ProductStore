@@ -15,6 +15,7 @@ namespace ProductStore.App_Start
     {
         public static void Setup()
         {
+            //todo: prevent optionals
             var builder = new ContainerBuilder();
 
             // Register your MVC controllers. (MvcApplication is the name of
@@ -25,11 +26,6 @@ namespace ProductStore.App_Start
             builder.RegisterModelBinders(typeof(MvcApplication).Assembly);
             builder.RegisterModelBinderProvider();
 
-            // OPTIONAL: Register web abstractions like HttpContextBase.
-            
-            
-            //builder.RegisterModule<AutofacWebTypesModule>();
-
             builder.RegisterModule<RepositoryResolver>();
 
             // OPTIONAL: Enable property injection in view pages.
@@ -38,21 +34,9 @@ namespace ProductStore.App_Start
             // OPTIONAL: Enable property injection into action filters.
             builder.RegisterFilterProvider();
 
-            // OPTIONAL: Enable action method parameter injection (RARE).
-            //builder.InjectActionInvoker();
-
             // Set the dependency resolver to be Autofac.
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-
-            //var builder = new ContainerBuilder();
-            //var config = GlobalConfiguration.Configuration; //new HttpConfiguration(); for owin
-            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
-
-            //builder.RegisterModule<BusinessModuleResolver>();
-
-            //var container = builder.Build();
-            //config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }
