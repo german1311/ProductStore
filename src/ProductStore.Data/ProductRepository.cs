@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProductStore.Repository.Interfaces;
 using ProductStore.Repository.Models;
 
@@ -10,7 +8,7 @@ namespace ProductStore.Data.Memory
 {
     public class ProductRepository : IProductRepository
     {
-        private static List<Product> _productDataBase = new List<Product>();
+        private static readonly List<Product> _productDataBase = new List<Product>();
 
         public IEnumerable<Product> GetAll()
         {

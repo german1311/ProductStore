@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Autofac;
 using ProductStore.Repository.Interfaces;
@@ -46,7 +44,17 @@ namespace ProductStore.Controllers
             {
                 return View(model);
             }
+
+
             _productRepository = _icoContext.ResolveNamed<IProductRepository>(SourceName);
+
+            if (_productRepository.GetAll().Any(p => p.Number == model.Number))
+            {
+                //todo: add in resource file
+                ModelState.AddModelError("Number", "This number already exists!");
+                return View(model);
+            }
+
             _productRepository.Save(model);
             return RedirectToAction("Index");
         }

@@ -13,15 +13,19 @@
             <br />
             <table class="table table-striped">
                 <thead class="">
-                <td colspan="2" style="width: 20%">Option</td>
-                <td>Name</td>
+                    <td colspan="2" style="width: 20%">Option</td>
+                    <td>Number</td>
+                    <td>Title</td>
+                    <td>Price</td>
                 </thead>
                 @foreach (var product in Model)
                 {
                     <tr>
                         <td style="width: 10%"><a class="btn btn-primary disabled" href="@Url.Action("Edit", "Product", new {id = product.Id})">Edit</a></td>
                         <td style="width: 10%">@Html.ActionLink("delete", "Delete", "Product", new { id = product.Id }, new { @class = "btn btn-danger disabled" })</td>
-                        <td>@product.Name</td>
+                        <td>@product.Number</td>
+                        <td>@product.Title</td>
+                        <td>@string.Format("{0:C}", product.Price)</td>
                     </tr>
                 }
             </table>

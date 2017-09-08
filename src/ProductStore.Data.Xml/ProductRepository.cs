@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ProductStore.Repository.Interfaces;
 using ProductStore.Repository.Models;
 
@@ -10,15 +9,15 @@ namespace ProductStore.Data.Xml
 {
     public class ProductRepository : IProductRepository
     {
-        //todo: move to webConfig
-        private static string file = "c://temp//producs.xml";
+        //todo: move to constructor or find a way to inject
+        private static readonly string file = ConfigurationManager.AppSettings["XmlFilePlace"];
 
         private static List<Product> _productDataBase = new List<Product>();
 
         public IEnumerable<Product> GetAll()
         {
             if (!_productDataBase.Any())
-                _productDataBase = FileUtils<List<Product>>.DeserializeFromXML(file);
+                _productDataBase = FileUtils<List<Product>>.DeserializeFromXML(file) ?? new List<Product>();
 
             return _productDataBase;
         }
