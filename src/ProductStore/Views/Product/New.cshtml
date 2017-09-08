@@ -1,17 +1,21 @@
 ﻿@model ProductStore.Repository.Models.Product
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "New Product";
 }
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-6 ">
+            <h2>New Product</h2>
 
-<h2>New</h2>
-
-@using (Html.BeginForm("New", "Product"))
-{
-    <div>
-        @Html.LabelFor(m => m.Name)
-        @Html.TextBoxFor(m => m.Name)
-        @Html.ValidationMessageFor(m => m.Name)
+            @using (Html.BeginForm("New", "Product", FormMethod.Post, new { @class = "" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name)
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <input class="btn btn-success" type="submit" />
+            }
+        </div>
     </div>
-
-    <input type="submit" />
-}
+</div>

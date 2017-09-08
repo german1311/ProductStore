@@ -2,28 +2,29 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="row">
+    <h2>Producs</h2>
 
-<h2>Index</h2>
-
-<div>
-    <div>
-        <a class="button" href="@Url.Action("New", "Product")">New</a>
-    </div>
-    <div>
-        <br />
-        <table>
-            <thead>
-            <td colspan="2">Option</td>
-            <td>Name</td>
-            </thead>
-            @foreach (var product in Model)
-            {
-                <tr>
-                    <td><a href="@Url.Action("Edit", "Product", new {id = product.Id})">Edit</a></td>
-                    <td>@Html.ActionLink("delete", "Delete", "Product", new { id = product.Id }, null)</td>
-                    <td>@product.Name</td>
-                </tr>
-            }
-        </table>
+    <div class="col-md-12">
+        <div>
+            <a class="btn btn-success" href="@Url.Action("New", "Product")">New</a>
+        </div>
+        <div>
+            <br />
+            <table class="table table-striped">
+                <thead class="">
+                <td colspan="2">Option</td>
+                <td>Name</td>
+                </thead>
+                @foreach (var product in Model)
+                {
+                    <tr>
+                        <td><a class="btn btn-primary" href="@Url.Action("Edit", "Product", new {id = product.Id})">Edit</a></td>
+                        <td>@Html.ActionLink("delete", "Delete", "Product", new { id = product.Id }, new { @class = "btn btn-warning" })</td>
+                        <td>@product.Name</td>
+                    </tr>
+                }
+            </table>
+        </div>
     </div>
 </div>
