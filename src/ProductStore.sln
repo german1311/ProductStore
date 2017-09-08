@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore", "ProductStore\ProductStore.csproj", "{E12FB476-302F-453F-AB05-EF01703D752B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.Repository", "..\ProductStore.Repository\ProductStore.Repository.csproj", "{134483C3-24F1-4E1C-B34A-09D5106CB981}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.Repository", "ProductStore.Repository\ProductStore.Repository.csproj", "{134483C3-24F1-4E1C-B34A-09D5106CB981}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductStore.Data.Memory", "ProductStore.Data\ProductStore.Data.Memory.csproj", "{2638FF6C-83FA-46FF-B795-F427B5C94292}"
 EndProject

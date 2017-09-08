@@ -11,7 +11,7 @@ namespace ProductStore.Resolver
             //default
             builder.RegisterType<ProductRepository>().AsImplementedInterfaces();
             //todo: names should be an enum or CONST
-            builder.RegisterType<Data.Memory.ProductRepository>().Named<IProductRepository>("memory");
+            builder.RegisterType<ProductRepository>().Named<IProductRepository>("memory");
             builder.RegisterType<Data.Xml.ProductRepository>().Named<IProductRepository>("xml");
         }
     }

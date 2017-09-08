@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ProductStore.Repository\ProductStore.Repository.csproj">
+    <ProjectReference Include="..\ProductStore.Repository\ProductStore.Repository.csproj">
       <Project>{134483c3-24f1-4e1c-b34a-09d5106cb981}</Project>
       <Name>ProductStore.Repository</Name>
     </ProjectReference>
