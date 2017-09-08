@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ProductStore.Repository.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <div>
+        <a class="button" href="@Url.Action("New", "Product")">New</a>
+    </div>
+    <div>
+        <br />
+        <table>
+            <thead>
+            <td colspan="2">Option</td>
+            <td>Name</td>
+            </thead>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Edit", "Product", new {id = product.Id})">Edit</a></td>
+                    <td>@Html.ActionLink("delete", "Delete", "Product", new { id = product.Id }, null)</td>
+                    <td>@product.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
